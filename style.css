@@ -122,3 +122,19 @@ nav ul li a:hover, a.active{
     display: flex;
     justify-content: space-between;
 }
+.bookingConfirmed{
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    border: 2px solid red;
+    background-color: black;
+    height: 300px;
+    display: none;
+    box-shadow: 3px 2px 5px red;
+}
+.cruseQueen{
+    color:greenyellow;
+    font-style: italic;
+    font-size: 25px;
+    align-items: center;
+    

@@ -15,6 +15,7 @@
 </head>
 
 <body>
+   
     <!--Header and Menu Section-->
     <header class="container">
         <nav>
@@ -36,7 +37,7 @@
         </div>
 
 
-        <div class="booking-form">
+        <div id="bookingForm" class="booking-form">
             <h3>Book Ocean Time</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -105,9 +106,18 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="booking" class="btn-style">Book Now</button>
+        </div>
+
+        <div id="afterBooking" class="bookingConfirmed">
+            <h1>Congratulation!</h1>
+            <h2>Your ticket Booking is Confirmed..</h2>
+            <h4 id="costOfticket"></h4>
+            <h4 class="cruseQueen">ENJOY YOUR: <br> CRUISE QUEEN TRIP</h4>
+            <p>Be Happy With Us..</p>
         </div>
     </main>
+
 
     <!--Thank You-->
 <script>
@@ -116,25 +126,19 @@ function TicketNumberChange(isIncrease){
         const TicketInput =   document.getElementById("firstClassValue");
         const TicketNumber=parseInt(TicketInput.value);
         let TicketIncrease =TicketNumber;
-        
-       
-
+      
     if(isIncrease==true){
-        TicketIncrease= TicketNumber+1;
-        
+        TicketIncrease= TicketNumber+1;  
  }
     if(isIncrease==false && TicketNumber>0){
         TicketIncrease= TicketNumber-1;
-       
-
  }
-    TicketInput.value= TicketIncrease;
-    const firstClassPrice= TicketIncrease*150;
-    document.getElementById("firstClassprice").innerText="$"+ firstClassPrice;
-    subtotal();
-    const EconomyClassPrice= TicketDecrease*100;
-    
-    
+
+        TicketInput.value= TicketIncrease;
+        const firstClassPrice= TicketIncrease*150;
+        document.getElementById("firstClassprice").innerText="$"+ firstClassPrice;
+        subtotal();
+        const EconomyClassPrice= TicketDecrease*100;
     }
 
 function EconomyTicketCount(EconomyIsIncrease){
@@ -142,42 +146,43 @@ function EconomyTicketCount(EconomyIsIncrease){
         const ticketNumber=parseInt(ticketInput.value);
         let TicketIncrease=ticketNumber;
       
-        
     if(EconomyIsIncrease==true){
         TicketIncrease=ticketNumber+1;
-        
-        
     }
     if(EconomyIsIncrease==false && ticketNumber>0){
         TicketIncrease=ticketNumber-1;
-        
     }
-    ticketInput.value= TicketIncrease;
-    const EconomyClassPrice= TicketIncrease*100;
-    document.getElementById("EconomyPrice").innerText="$"+ EconomyClassPrice;
-   subtotal();
+        ticketInput.value= TicketIncrease;
+        const EconomyClassPrice= TicketIncrease*100;
+        document.getElementById("EconomyPrice").innerText="$"+ EconomyClassPrice;
+        subtotal();
     
    
     }
 
 
-    function subtotal(){
-       const firstClassValuee= document.getElementById("firstClassValue").value;
-       const firstClassNumberr= parseInt(firstClassValuee);
+function subtotal(){
+       const firstClassValue= document.getElementById("firstClassValue").value;
+       const firstClassNumber= parseInt(firstClassValue);
 
        const EconomyValue= document.getElementById('EconomyValue').value;
        const EconomyNumber= parseInt(EconomyValue);
+       const subtotalPrice=firstClassNumber*150 + EconomyNumber*100;
 
-       const totalPrice=firstClassNumberr*150 + EconomyNumber*100;
-       document.getElementById('subtotal').innerText='$'+ totalPrice;
-
+       document.getElementById('subtotal').innerText='$'+ subtotalPrice;
        const tax=totalPrice*0.1;
        document.getElementById("tax").innerText='$'+ tax;
-
-       const total= totalPrice+tax;
+       const total= subtotalPrice+tax;
        document.getElementById('total').innerText='$'+ total;
-
     }
+       document.getElementById('booking').addEventListener("click",function(){
+       document.getElementById("bookingForm").style.display="none";
+       document.getElementById('afterBooking').style.display='block';
+
+    //    const totalAmount=document.getElementById('total').value;
+    //    const totalNumber=parseInt(totalAmount);
+    //    document.getElementById('costOfticket').innerText='Your total Cost of Ticket:'+ totalNumber;
+    })
 
 
 
