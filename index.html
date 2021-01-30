@@ -170,7 +170,7 @@ function subtotal(){
        const subtotalPrice=firstClassNumber*150 + EconomyNumber*100;
 
        document.getElementById('subtotal').innerText='$'+ subtotalPrice;
-       const tax=totalPrice*0.1;
+       const tax=subtotalPrice*0.1;
        document.getElementById("tax").innerText='$'+ tax;
        const total= subtotalPrice+tax;
        document.getElementById('total').innerText='$'+ total;
